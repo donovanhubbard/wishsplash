@@ -3,12 +3,10 @@ A middleware for displaying an in-console splash screen for wish-ssh apps
 
 ![Image of a banner inside a terminal emulator](screenshot.png)
 
-I love writting SSH apps with charm's wish library 
-[https://github.com/charmbracelet/wish](https://github.com/charmbracelet/wish). It makes it quick and easy to setup.
-One of the features is to chain middleware to your session to make it easy to add
-functionality. I also found a great library for rendering text banners.
-
-[https://github.com/superstarryeyes/bit](https://github.com/superstarryeyes/bit)
+Display wonderful splash screens in your Charm wish SSH apps.
+[https://github.com/charmbracelet/wish](https://github.com/charmbracelet/wish)
+This is done using the [https://github.com/superstarryeyes/bit](https://github.com/superstarryeyes/bit)
+library. Simply define your options and invoke the middleware. The rest is taken care of for you.
 
 # Features
 
