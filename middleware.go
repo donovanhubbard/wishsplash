@@ -181,6 +181,9 @@ func WithLogger(opts Options, logger Logger) wish.Middleware {
 
 			logger.Info("Starting wishsplash middleware", "method", "withLogger")
 
+			// Used to tell go routine this is done
+			splashTerminated := false
+
 			ptyReq, winCh, ok := sess.Pty()
 			if !ok {
 				logger.Error("Failed to get PTY", "method", "WithLogger")
@@ -200,8 +203,13 @@ func WithLogger(opts Options, logger Logger) wish.Middleware {
 			// re-render the screen if the winow resizes
 			go func() {
 				for win := range winCh {
-					logger.Info("Window resized", "method", "WithLogger")
-					renderSplashScreen(sess, opts, win, logger)
+					if splashTerminated == true {
+						logger.Info("Terminating go routine to resize windows for splash screen", "method", "WithLogger")
+						return
+					} else {
+						logger.Info("Window resized", "method", "WithLogger")
+						renderSplashScreen(sess, opts, win, logger)
+					}
 				}
 			}()
 
@@ -227,6 +235,7 @@ func WithLogger(opts Options, logger Logger) wish.Middleware {
 
 			sess.Write([]byte(RESTORE_CURSOR))
 			sess.Write([]byte(SWITCH_TO_MAIN_BUFFER))
+			splashTerminated = true
 			logger.Info("Completed wishsplash middleware", "method", "WithLogger")
 			next(sess)
 		}
