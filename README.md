@@ -67,3 +67,25 @@ Then when you create your wish ssh server, include it will all your other middle
 ```
 There is a complete working example in the `examples` directory.
 
+You can also pass a custom logger to the wishsplash middleware, although you probably won't
+want to unless you are troubleshooting something with it.
+
+```
+import(
+  charmLog "charm.land/log/v2"
+)
+
+...
+
+	charmLogger := charmLog.New(os.Stderr)
+	charmLogger.SetLevel(charmLog.DebugLevel)
+
+...
+
+
+			wishsplash.WithLogger(opts,logger),
+```
+
+
+
+
