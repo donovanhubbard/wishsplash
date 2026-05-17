@@ -10,8 +10,8 @@ import (
 	"unicode/utf8"
 
 	"github.com/acarl005/stripansi"
-	"github.com/charmbracelet/ssh"
 	"github.com/creack/pty"
+	"github.com/donovanhubbard/ssh"
 	"github.com/donovanhubbard/wish"
 	"github.com/superstarryeyes/bit/ansifonts"
 )
