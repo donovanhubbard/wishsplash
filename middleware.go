@@ -9,10 +9,10 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"charm.land/wish/v2"
 	"github.com/acarl005/stripansi"
 	"github.com/charmbracelet/ssh"
 	"github.com/creack/pty"
+	"github.com/donovanhubbard/wish"
 	"github.com/superstarryeyes/bit/ansifonts"
 )
 
